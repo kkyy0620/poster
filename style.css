@@ -1,0 +1,16 @@
+html {
+  background-color: black;
+}
+
+body {
+  margin: 0;
+}
+
+.box {
+  position: absolute;
+  top: 31px;
+  bottom: 31px;
+  left: 82px;
+  right: 82px;
+  background-color: #92cdeb;
+}
