@@ -14,3 +14,12 @@ body {
   right: 82px;
   background-color: #92cdeb;
 }
+
+.top-line {
+  position: absolute;
+  top: 31px;
+  left: 82px;
+  width: 72%;
+  height: 16px;
+  background-color: black;
+}
