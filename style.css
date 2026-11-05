@@ -1,6 +1,5 @@
 html {
   background-color: black;
-  overflow-x: clip;
 }
 
 body {
@@ -12,8 +11,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-  margin: 31px clamp(20px, 5.7vw, 82px);
-  min-height: calc(100vh - 62px);
+  margin: 31px clamp(10px, 5.7vw, 82px);
   z-index: 1;
   background-color: #92cdeb;
 }
@@ -22,13 +20,12 @@ body {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   grid-template-rows: 1fr auto;
-  min-height: calc(100vh - 62px);
   width: 100%;
   gap: 20px;
 }
 
 .title-group {
-  display: inline-flex;
+  display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
@@ -51,16 +48,9 @@ body {
 .top-line {
   width: 100%;
   height: 20px;
-  min-height: 20px;
-  max-height: 20px;
-  flex: 0 0 20px;
   box-sizing: border-box;
   background-color: black;
   margin-top: 20px;
-}
-
-.photo-text {
-  margin-top: -10px;
 }
 
 .title {
@@ -73,6 +63,15 @@ body {
   width: max-content;
 }
 
+.photo-text {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+  font-weight: 700;
+  font-size: 30px;
+}
+
 .poster-image {
   width: 55%;
   height: auto;
@@ -83,53 +82,47 @@ body {
   margin-right: -82px;
   z-index: 2;
 }
-.country {
-  font-size: clamp(14px, 2.8vw, 35px);
-  white-space: nowrap;
-}
-.photo-text {
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  gap: 30px;
-  font-weight: 700;
-  font-size: 30px;
-}
 
 .text-area {
   flex: 1;
-  min-width: 0;
-  margin-top: clamp(20px, calc(20vw - 288px), 60px);
-  container-type: inline-size;
+}
+
+.country {
+  font-size: clamp(14px, 2.8vw, 35px);
+  white-space: nowrap;
 }
 
 .info-box {
   background-color: black;
   padding: 15px;
-  margin-top: max(-1.74vw, -25px);
   width: 100%;
   box-sizing: border-box;
 }
 
 .place {
   color: #92cdeb;
-  margin: 0px;
+  margin: 0;
   font-size: clamp(65px, 4.57vw, 75px);
-  white-space: nowrap;
 }
 
 .city {
   color: #92cdeb;
-  margin: 0px;
+  margin: 0;
   margin-top: -5px;
   font-size: clamp(35px, 2.44vw, 40px);
-  white-space: nowrap;
+}
+
+.featuring {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .also {
   font-weight: 200;
   margin-top: 15px;
-  margin-bottom: -30px;
+  margin-bottom: 0;
   font-size: clamp(11px, 2vw, 30px);
 }
 
@@ -140,7 +133,7 @@ body {
 .guest {
   font-weight: 600;
   font-size: clamp(20px, 2.13vw, 35px);
-  white-space: nowrap;
+  margin-top: 0;
 }
 
 .bottom-line {
@@ -154,22 +147,6 @@ body {
   font-size: clamp(98px, 6.7vw, 110px);
   font-weight: 1000;
   margin-inline: 10px;
-  white-space: nowrap;
-}
-
-@media screen and (max-width: 1440px) {
-  .info-box {
-    width: 100%;
-  }
-
-  .place,
-  .city,
-  .country,
-  .guest,
-  .date {
-    white-space: normal;
-    overflow-wrap: break-word;
-  }
 }
 
 @media screen and (max-width: 768px) {
@@ -180,10 +157,17 @@ body {
   .poster {
     width: 100%;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: 1fr auto;
     min-height: calc(100vh - 62px);
     align-items: stretch;
+  }
+
+  .heading {
+    width: 100%;
+    align-items: center;
+  }
+
+  .title-group {
+    align-items: center;
   }
 
   .title {
@@ -193,10 +177,8 @@ body {
   }
 
   .top-line {
-    height: 10px;
-    min-height: 10px;
-    max-height: 10px;
-    flex: 0 0 10px;
+    width: 100%;
+    height: 15px;
   }
 
   .photo-text {
@@ -216,49 +198,57 @@ body {
 
   .text-area {
     width: 100%;
+    min-width: 0;
     margin-top: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "country featuring"
-      "info    featuring";
+      "country also"
+      "info guest";
     column-gap: 20px;
     align-content: start;
   }
 
   .country {
-    grid-area: country;
     margin-left: 10px;
     margin-top: 10px;
     font-size: 22px;
   }
+
   .info-box {
-    grid-area: info;
-    width: 100%;
-    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
+
   .featuring {
-    grid-area: featuring;
+    display: contents;
   }
 
   .place {
-    font-size: 30px;
+    font-size: 35px;
   }
+
   .city {
-    font-size: 16px;
-    white-space: normal;
-  }
-  .also {
-    font-size: 18px;
-    margin-top: 0px;
-  }
-  .featuring {
-    margin-top: 20px;
-  }
-  .guest {
     font-size: 20px;
-    margin-top: 40px;
+    margin-top: 5px;
     white-space: normal;
+  }
+
+  .also {
+    grid-area: also;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+
+  .guest {
+    grid-area: guest;
+    font-size: clamp(26px, 5cqw, 30px);
+    margin-top: 0;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .date-group {
@@ -266,36 +256,37 @@ body {
     grid-row: 2 / 3;
     align-self: end;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .mobile-br {
+    display: block;
   }
 
   .bottom-line {
-    width: 80%;
-    margin-top: 0;
+    width: 100%;
+    height: 8px;
+    background-color: black;
+    margin-top: 14px;
   }
+
   .date {
-    font-size: 6.4vw;
+    font-size: 5.3vw;
+    font-weight: 1000;
+    margin: 10px;
+    white-space: nowrap;
+    text-align: center;
   }
 }
 
 @media screen and (max-width: 375px) {
-  .box {
-    margin: 20px;
-  }
-
   .top-line {
-    width: 100%;
     height: 10px;
     min-height: 10px;
     max-height: 10px;
     flex: 0 0 10px;
-  }
-
-  .title-group {
-    align-items: center;
-  }
-
-  .heading {
-    align-items: center;
   }
 
   .photo-text {
@@ -303,6 +294,7 @@ body {
   }
 
   .title {
+    margin-top: 10px;
     font-size: 18vw;
     font-weight: 600;
   }
@@ -331,20 +323,19 @@ body {
     font-size: 20px;
   }
 
-  .mobile-br {
-    display: block;
-  }
-
   .featuring {
-    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 80px;
+    gap: 20px;
   }
 
-  .guest {
+  .also {
     font-size: 20px;
   }
 
-  .bottom-line {
-    width: 100%;
+  .guest {
+    font-size: 28px;
   }
 
   .date {
